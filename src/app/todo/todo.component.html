@@ -1,8 +1,16 @@
 <div class="container">
   <div class="row py-2">
-    <div class="text-right">Total Items {{ items.length }}</div>
+    <div class="col-3">
+      <span>Completed Items : {{ compltetedItems }}</span>
+    </div>
+    <div class="col-3">
+      <span>Pending Items : {{ pendingItems }}</span>
+    </div>
+    <div class="col-6 text-right">
+      <span>Total Items : {{ items.length }}</span>
+    </div>
   </div>
-  <div class="row alert alert-info">
+  <div class="row alert alert-secondary">
     <div class="col-11">
       <input [(ngModel)]="addNew" type="text" value="" class="form-control" />
     </div>
@@ -13,9 +21,20 @@
     </div>
   </div>
   <div *ngFor="let item of items; let index = index">
-    <div class="row alert alert-primary">
+    <div
+      class="row alert"
+      (click)="status(index)"
+      [ngClass]="item.status == true ? 'alert-success' : 'alert-primary'"
+    >
       <div class="col-11">
-        <span>{{ item }}</span>
+        <div class="row p-2">
+          <div class="col-10">
+            <span>{{ item.task }}</span>
+          </div>
+          <div class="col-2">
+            <span *ngIf="item.status">Completed</span>
+          </div>
+        </div>
       </div>
       <div class="col-1">
         <button
