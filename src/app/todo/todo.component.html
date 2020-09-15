@@ -3,25 +3,28 @@
     <div class="text-right">Total Items {{ items.length }}</div>
   </div>
   <div class="row alert alert-info">
-    <div class="col-8">
+    <div class="col-11">
       <input [(ngModel)]="addNew" type="text" value="" class="form-control" />
     </div>
-    <div class="col-4">
-      <button (click)="addToList()" class="btn btn btn-primary">ADD NEW</button>
+    <div class="col-1">
+      <button (click)="addToList()" class="btn btn-primary" style="width: 87px">
+        ADD
+      </button>
     </div>
   </div>
   <div *ngFor="let item of items; let index = index">
     <div class="row alert alert-primary">
-      <div class="col-8">
+      <div class="col-11">
         <span>{{ item }}</span>
       </div>
-      <div class="col-4">
-        <input
+      <div class="col-1">
+        <button
           (click)="removeItem(index)"
-          type="button"
-          value="Delete"
           class="btn btn-danger"
-        />
+          style="width: 87px"
+        >
+          REMOVE
+        </button>
       </div>
     </div>
   </div>
